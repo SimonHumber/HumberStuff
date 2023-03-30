@@ -1,0 +1,72 @@
+class invest:
+    def get_time(year,months,days):
+        while (days>30):
+            months += 1
+            days -= 30
+        while (months > 11):
+            year += 1
+            months -=12
+
+        total = year+(months/12)+(days/365)
+
+        return round(total, 2)
+
+    def Simple_interest(money, interest):
+
+        totalInterest = ((interest/100)*get_time(inputYear, inputMonth, inputDay)*money)
+        return totalInterest
+    
+    def input_time():
+        print('Enter years: ', end="")
+        while True:
+            try:
+                inputYear=int(input())
+            except ValueError:
+                print("Year must be a whole number")
+                print('Enter years: ', end='')
+                continue
+            break
+
+        print('Enter months: ', end='')
+        while True:
+            try:
+                inputMonth=int(input())
+            except ValueError:
+                print('Months must be a whole number')
+                print('Enter months: ', end='')
+                continue
+            break
+
+        print('Enter days: ', end='')
+        while True:
+            try:
+                inputDay = int(input())
+            except ValueError:
+                print("Days must be a whole number")
+                print("Enter days: ", end='')
+                continue
+            break
+
+        print('Principle: ', end="")
+        while True:
+            try:
+                principle = float(input())
+            except ValueError:
+                print('Principle must be a number')
+                print("Principle: ", end='')
+                continue
+            break
+
+        print('Rate (in %) ', end ="")
+        while True:
+            try:
+                rate = float(input())
+            except ValueError:
+                print('Rate must be a number')
+                print('Rate (in %) ', end='')
+                continue
+            break
+
+
+print('Total time in years is ' + str(get_time(inputYear,inputMonth,inputDay)) + ' years')
+print('Total interest earned is $' + str(Simple_interest(principle, rate)))
